@@ -30,10 +30,10 @@ const PostController = {
     },
     async getPostsByTitle(req, res){ //CAMBIAR TITLE A USERNAME CUANDO TENGAMOS EL USERCONTROLLER
         try {
-        //    if(req.params.name.length > 20){
-        //     return res.status(400).send('Busqueda demasiado larga')
-        //    } 
-           const title = new RegExp(req.params.name, 'i');
+           if(req.params.title.length > 20){
+            return res.status(400).send('Busqueda demasiado larga')
+           } 
+           const title = new RegExp(req.params.title, 'i');
            const post = await Post.find({title})
            res.send(post)
         } catch (error) {
