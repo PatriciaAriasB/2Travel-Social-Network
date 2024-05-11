@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 const UserSchema = new mongoose.Schema(
     {
         name: {
@@ -34,8 +33,11 @@ const UserSchema = new mongoose.Schema(
             type: String,
             require: [true, 'Por favor, inserte una contraseña']
         },
+        tokens: [],
     }, {timestamps: true}
 );
+
+const User = mongoose.model('User', UserSchema);
 
 
 module.exports = User;
