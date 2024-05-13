@@ -18,6 +18,7 @@ const UserController = {
             const user = await User.findOne({
                 email: req.body.email
             })
+         
             const token = jwt.sign({_id: user._id}, jwt_secret)
             if(user.tokens.length > 4) user.tokens.shift();
             user.tokens.push(token)

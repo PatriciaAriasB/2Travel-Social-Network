@@ -15,7 +15,7 @@ const UserSchema = new mongoose.Schema(
         },
         gender: {
             type: String,
-            require: [true, 'Por favor, inserte su sexo']
+            require: [true, 'Por favor, inserte un dato']
         },
         username: {
             type: String,
@@ -23,7 +23,7 @@ const UserSchema = new mongoose.Schema(
         },
         email: {
             type: String,
-            require: [true, 'Por favor, inserte un correo']
+            require: [true, 'Por favor, inserte un correo electronico válido']
         },
         phone: {
             type: Number,
