@@ -33,6 +33,9 @@ const UserSchema = new mongoose.Schema(
             type: String,
             require: [true, 'Por favor, inserte una contraseña']
         },
+        role: {
+            type: String,
+        },
         tokens: [],
     }, {timestamps: true}
 );
