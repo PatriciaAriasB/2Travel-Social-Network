@@ -17,7 +17,14 @@ const UserController = {
         try {
             const user = await User.findOne({
                 email: req.body.email
-            })
+            });
+            if(!user){
+                return res.status(400).send({msg: 'El correo o la contraseña incorrectos'})
+            }
+            const isMatch = bcrypt.compareSync(req.body.password, user.password)
+            if(!isMatch){
+                return res.status(400).send({msg: 'El correo o la contraseña incorrectos'})
+            }
             const token = jwt.sign({_id: user._id}, jwt_secret)
             if(user.tokens.length > 4) user.tokens.shift();
             user.tokens.push(token)
@@ -36,7 +43,7 @@ const UserController = {
             res.send({msg: 'Desconectado con éxito'})
         } catch (error) {
             console.error(error);
-            res.status(500).send({msg: 'Hubo un problema al tratar de desconectar al usuario'})
+            res.status(500).send({msg: 'Parece que hubo un problema al tratar de desconectar al usuario'})
         }
     }
 }
