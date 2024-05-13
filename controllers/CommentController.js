@@ -12,7 +12,7 @@ const CommentController = {
     },
     async update(req, res){
         try {
-            const post = await Comment.findByIdAndUpdate(req.params._id, req.body, {new: true})
+            const comment = await Comment.findByIdAndUpdate(req.params._id, req.body, {new: true})
             res.send({msg: 'Comentario actualizado correctamente', comment})
         } catch (error) {
             console.error(error);
@@ -21,7 +21,7 @@ const CommentController = {
     },
     async delete(req, res){
         try {
-            const post = await Comment.findByIdAndDelete(req.params._id)
+            const comment = await Comment.findByIdAndDelete(req.params._id)
             res.send({msg: 'Comentario eliminado correctamente', comment})
         } catch (error) {
             console.error(error);
@@ -42,7 +42,7 @@ const CommentController = {
     },
     async getCommentById(req, res){
         try {
-            const post = await Comment.findById(req.params._id)
+            const comment = await Comment.findById(req.params._id)
             res.send(comment)
         } catch (error) {
             console.error(error)
