@@ -6,6 +6,7 @@ const {authentication} = require('../middleware/authentication')
 router.post('/', UserController.register);
 router.post('/login', UserController.login);
 router.delete('/logout', authentication, UserController.logout);
+router.get('/id/:_id', UserController.getOnline);
 
 
 module.exports = router;
