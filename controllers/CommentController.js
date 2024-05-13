@@ -3,8 +3,9 @@ const Comment = require('../models/Comment');
 const CommentController = {
     async create(req, res){
         try {
-            const Comment = await Comment.create(req.body)
-            res.status(201).send(post)
+            const comment = await Comment.create(req.body)
+// Post.findByIdAndUpdate
+            res.status(201).send(comment)
         } catch (error) {
             console.error(error);
             res.status(500).send({msg: 'Ha habido un problema al crear el comentario'})
@@ -21,7 +22,7 @@ const CommentController = {
     },
     async delete(req, res){
         try {
-            const post = await Comment.findByIdAndDelete(req.params._id)
+            const comment = await Comment.findByIdAndDelete(req.params._id)
             res.send({msg: 'Comentario eliminado correctamente', comment})
         } catch (error) {
             console.error(error);
@@ -42,7 +43,7 @@ const CommentController = {
     },
     async getCommentById(req, res){
         try {
-            const post = await Comment.findById(req.params._id)
+            const comment = await Comment.findById(req.params._id)
             res.send(comment)
         } catch (error) {
             console.error(error)
