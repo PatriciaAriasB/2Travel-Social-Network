@@ -51,7 +51,21 @@ const PostController = {
             console.error(error)
             res.status(500).send({msg: 'Lo sentimos, no hemos podido encontrar este Post', error})
         }
+    },
+    async insertComment(req, res) {
+        try {
+          const post = await Post.findByIdAndUpdate(
+            req.params._id,
+            { $push: { comments: { body: req.body.body, commentId: req.params._id } } },
+            { new: true }
+          );
+          res.send(post);
+        } catch (error) {
+          console.error(error);
+          res.status(500).send({ msg: "Hubo un problema con su comentario" });
+        }
+      },
     }
-}
+    
 
 module.exports = PostController;

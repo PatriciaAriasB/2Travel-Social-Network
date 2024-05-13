@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const ObjectId = mongoose.SchemaTypes.ObjectId;
 
 const PostSchema = new mongoose.Schema({
     title: {
@@ -15,7 +16,14 @@ const PostSchema = new mongoose.Schema({
         // userId: [{type: ObjectId, ref: 'User'}]
         //commentIds: [{type: ObjectId, ref: 'Comment'}]
     
-    }
+    },
+    userId: {
+       userId: {type: ObjectId, ref: 'User'},
+    },
+    comments: [{
+        commentId: {type: ObjectId, ref: 'Comment'},
+        body: String
+    }]
 }, {timestamps: true});
 
 PostSchema.index({
