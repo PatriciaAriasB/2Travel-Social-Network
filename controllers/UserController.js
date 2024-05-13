@@ -11,6 +11,7 @@ const UserController = {
             res.status(201).send({msg: `Bienvenid@ ${req.body.name}, su cuenta ha sido creada correctamente`, user})
         } catch (error) {
             console.error(error);
+            res.status(400).send(error)
         }
     },
     async login (req, res){

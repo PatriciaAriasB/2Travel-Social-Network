@@ -7,7 +7,7 @@ const PostController = {
             res.status(201).send(post)
         } catch (error) {
             console.error(error);
-            res.status(500).send({msg: 'Ha habido un problema al crear la publicación'})
+            res.status(500).send({msg: 'Ha habido un problema al crear la publicación', error})
         }
     },
     async update(req, res){
