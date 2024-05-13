@@ -16,10 +16,10 @@ CommentsSchema.index({
     title: 'text',
 })
 
-const Post = mongoose.model('Comments', PostSchema)
+const Comment = mongoose.model('Comments', CommentsSchema)
 
 
 
 
 
-module.exports = Comments;
+module.exports = Comment;

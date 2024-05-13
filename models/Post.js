@@ -19,7 +19,7 @@ const PostSchema = new mongoose.Schema({
 
 PostSchema.index({
     title: 'text',
-})
+});
 
 const Post = mongoose.model('Post', PostSchema)
 
