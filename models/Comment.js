@@ -2,16 +2,15 @@ const mongoose = require('mongoose');
 const ObjectId = mongoose.SchemaTypes.ObjectId;
 
 const CommentsSchema = new mongoose.Schema({
-    userId: {
-        type: String,
-        required: [true, 'Por favor, introduce tu nombre'],
-    },
     body: {
         type: String,
         required: [true, 'Por favor, inserte una descripción']
     },
     postId:{
         postId: {type: ObjectId, ref: 'Post'}
+    },
+    userId: {
+        userId: {type: ObjectId, reg: 'User'}
     }
   
 }, {timestamps: true});

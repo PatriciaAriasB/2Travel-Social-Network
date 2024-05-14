@@ -56,7 +56,7 @@ const PostController = {
         try {
           const post = await Post.findByIdAndUpdate(
             req.params._id,
-            { $push: { comments: { body: req.body.body, commentId: req.params._id } } },
+            { $push: { comments: { body: req.body.body, userId: req.user._id } } },
             { new: true }
           );
           res.send(post);
