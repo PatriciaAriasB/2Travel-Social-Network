@@ -3,11 +3,14 @@ const Post = require('../models/Post');
 const PostController = {
     async create(req, res){
         try {
-            const post = await Post.create(req.body)
+            const post = await Post.create({
+                ...req.body, 
+                commentId:req.comment._id
+            })
             res.status(201).send(post)
         } catch (error) {
             console.error(error);
-            res.status(500).send({msg: 'Ha habido un problema al crear la publicación'})
+            res.status(500).send({msg: 'Ha habido un problema al crear la publicación', error})
         }
     },
     async update(req, res){
