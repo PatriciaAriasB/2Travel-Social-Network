@@ -44,6 +44,8 @@ const UserSchema = new mongoose.Schema(
         online: {
             type: Boolean,
         },
+        img: String,
+        postIds: [{type: ObjectId, ref: 'Post'}],
         tokens: [],
         wishList: [{ type: ObjectId, ref: 'Post' }],
     }, {timestamps: true}
