@@ -19,11 +19,6 @@ const PostSchema = new mongoose.Schema({
     },
     userId: {
        userId: {type: ObjectId, ref: 'User'},
-<<<<<<< HEAD
-       user_Id: String
-=======
-       
->>>>>>> develope
     },
     comments: [{
         commentId: {type: ObjectId, ref: 'Comment'},

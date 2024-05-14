@@ -1,4 +1,6 @@
 const Post = require('../models/Post');
+const Comment = require('../models/Comment');
+
 
 const PostController = {
     async create(req, res){
@@ -56,11 +58,7 @@ const PostController = {
         try {
           const post = await Post.findByIdAndUpdate(
             req.params._id,
-<<<<<<< HEAD
             { $push: { comments: { body: req.body.body, userId: req.user._id } } },
-=======
-            { $push: { comments: { body: req.body.body, usertId: req.user._id } } },
->>>>>>> develope
             { new: true }
           );
           res.send(post);

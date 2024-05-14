@@ -2,10 +2,6 @@ const mongoose = require('mongoose');
 const ObjectId = mongoose.SchemaTypes.ObjectId;
 
 const CommentsSchema = new mongoose.Schema({
-<<<<<<< HEAD
-=======
-   
->>>>>>> develope
     body: {
         type: String,
         required: [true, 'Por favor, inserte una descripción']
