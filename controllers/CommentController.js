@@ -47,7 +47,7 @@ const CommentController = {
             res.send(comment)
         } catch (error) {
             console.error(error)
-            res.status(500).send({msg: 'Sorry, no hemos podido encontrar este comentario', error})
+            res.status(500).send({msg: 'No hemos podido encontrar este comentario', error})
         }
     }
 }
