@@ -11,7 +11,7 @@ router.get('/title/:title', PostController.getPostsByTitle); //CAMBIAR TITLE A U
 router.get('/id/:_id', PostController.getPostById);
 router.get('/', PostController.getAll);
 router.put('/comments/:_id', PostController.insertComment);
-
+router.put('/likes/:_id',PostController.like);
 
 
 module.exports = router;

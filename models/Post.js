@@ -23,7 +23,8 @@ const PostSchema = new mongoose.Schema({
     comments: [{
         commentId: {type: ObjectId, ref: 'Comment'},
         body: String
-    }]
+    }],  
+     likes: [{ type: ObjectId }],
 }, {timestamps: true});
 
 PostSchema.index({
