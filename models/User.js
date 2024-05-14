@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const ObjectId = mongoose.SchemaTypes.ObjectId;
 
 const UserSchema = new mongoose.Schema(
     {
@@ -38,11 +39,13 @@ const UserSchema = new mongoose.Schema(
         },
         role: {
             type: String,
+         
         },
         online: {
             type: Boolean,
         },
         tokens: [],
+        wishList: [{ type: ObjectId, ref: 'Post' }],
     }, {timestamps: true}
 );
 
