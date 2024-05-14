@@ -20,11 +20,11 @@ const UserController = {
                 email: req.body.email
             });
             if(!user){
-                return res.status(400).send({msg: 'El correo o la contraseña incorrectos'})
+                return res.status(400).send({msg: 'Correo o contraseña incorrecto'})
             }
             const isMatch = bcrypt.compareSync(req.body.password, user.password)
             if(!isMatch){
-                return res.status(400).send({msg: 'El correo o la contraseña incorrectos'})
+                return res.status(400).send({msg: 'Correo o contraseña incorrecto'})
             }
             const token = jwt.sign({_id: user._id}, jwt_secret)
             if(user.tokens.length > 4) user.tokens.shift();

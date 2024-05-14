@@ -16,7 +16,7 @@ const CommentController = {
     },
     async update(req, res){
         try {
-            const post = await Comment.findByIdAndUpdate(req.params._id, req.body, {new: true})
+            const comment = await Comment.findByIdAndUpdate(req.params._id, req.body, {new: true})
             res.send({msg: 'Comentario actualizado correctamente', comment})
         } catch (error) {
             console.error(error);

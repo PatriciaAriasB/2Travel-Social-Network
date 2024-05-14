@@ -56,7 +56,11 @@ const PostController = {
         try {
           const post = await Post.findByIdAndUpdate(
             req.params._id,
+<<<<<<< HEAD
             { $push: { comments: { body: req.body.body, userId: req.user._id } } },
+=======
+            { $push: { comments: { body: req.body.body, usertId: req.user._id } } },
+>>>>>>> develope
             { new: true }
           );
           res.send(post);
@@ -65,7 +69,23 @@ const PostController = {
           res.status(500).send({ msg: "Hubo un problema con su comentario" });
         }
       },
+
+      async getAll(req, res) {
+        try {
+          const { page = 1, limit = 10 } = req.query;
+          const posts = await Post.find()
+            .limit(limit)
+            .skip((page - 1) * limit);
+          res.send(posts);
+        } catch (error) {
+          console.error(error);
+        }
+      },
     }
+    
+
+
+    
     
 
 module.exports = PostController;
