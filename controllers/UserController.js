@@ -46,6 +46,21 @@ const UserController = {
             console.error(error);
             res.status(500).send({msg: 'Parece que hubo un problema al tratar de desconectar al usuario'})
         }
+    },
+    async getOnline(req, res){
+        try {
+            const user = await User.findOne({_id: req.params._id})
+            if(!user.online){
+                user.online = true;
+                await user.save();
+                return res.send({msg: `El usuario con el id: ${req.params._id}, está online`});
+            }else{
+                return res.send({msg: `El usuario con el id: ${req.params._id}, está offline`});
+            }
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error)
+        }
     }
 }
 

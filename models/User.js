@@ -39,6 +39,9 @@ const UserSchema = new mongoose.Schema(
         role: {
             type: String,
         },
+        online: {
+            type: Boolean,
+        },
         tokens: [],
     }, {timestamps: true}
 );
