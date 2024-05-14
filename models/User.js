@@ -25,7 +25,8 @@ const UserSchema = new mongoose.Schema(
         },
         email: {
             type: String,
-            required: [true, 'Por favor, inserte un correo electronico válido'],
+            match: [/.+\@.+\..+/, 'Este correo no es valido'],
+            required: [true, 'Por favor, inserte tu correo'],
             unique: true
         },
         phone: {
