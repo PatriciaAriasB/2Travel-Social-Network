@@ -60,6 +60,19 @@ const UserController = {
             console.error(error);
             res.status(500).send(error)
         }
+    },
+    async getUserByName(req, res){
+        try {
+            if(req.params.name.length > 20){
+                return res.status(400).send('Su busqueda es muy larga')
+            }
+            const name = new RegExp(req.params.name, 'i');
+            const user = await User.find({name})
+            res.send(user)
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error)
+        }
     }
 }
 
