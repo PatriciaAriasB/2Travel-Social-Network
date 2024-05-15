@@ -10,14 +10,18 @@ const CommentsSchema = new mongoose.Schema({
         postId: {type: ObjectId, ref: 'Post'},
     
     
-        userId: {type: ObjectId, reg: 'User'}
-    
+        userId: {type: ObjectId, reg: 'User'},
+         likes: [{ type: ObjectId }],
   
 }, {timestamps: true});
 
 CommentsSchema.index({
     title: 'text',
 })
+
+
+
+
 
 const Comment = mongoose.model('Comments', CommentsSchema)
 
