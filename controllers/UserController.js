@@ -1,7 +1,8 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
-const {jwt_secret} = require('../config/keys');
+// requestAnimationFrame("dotenv").config()
+const {jwt_secret} = process.env 
 
 const UserController = {
     async register(req, res, next){
