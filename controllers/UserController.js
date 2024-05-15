@@ -5,14 +5,13 @@ requestAnimationFrame("dotenv").config()
 const {jwt_secret} = process.env 
 
 const UserController = {
-    async register(req, res){
+    async register(req, res, next){
         try {
             const password = bcrypt.hashSync(req.body.password, 10)
             const user = await User.create({...req.body, password, role:"user"})
             res.status(201).send({msg: `Bienvenid@ ${req.body.name}, su cuenta ha sido creada correctamente`, user})
         } catch (error) {
-            console.error(error);
-            res.status(400).send(error)
+            next(error)
         }
     },
     async login (req, res){
@@ -58,6 +57,19 @@ const UserController = {
             }else{
                 return res.send({msg: `El usuario con el id: ${req.params._id}, está offline`});
             }
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error)
+        }
+    },
+    async getUserByName(req, res){
+        try {
+            if(req.params.name.length > 20){
+                return res.status(400).send('Su busqueda es muy larga')
+            }
+            const name = new RegExp(req.params.name, 'i');
+            const user = await User.find({name})
+            res.send(user)
         } catch (error) {
             console.error(error);
             res.status(500).send(error)

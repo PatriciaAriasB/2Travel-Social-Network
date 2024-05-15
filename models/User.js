@@ -25,7 +25,8 @@ const UserSchema = new mongoose.Schema(
         },
         email: {
             type: String,
-            required: [true, 'Por favor, inserte un correo electronico válido'],
+            match: [/.+\@.+\..+/, 'Este correo no es valido'],
+            required: [true, 'Por favor, inserte tu correo'],
             unique: true
         },
         phone: {
@@ -44,10 +45,19 @@ const UserSchema = new mongoose.Schema(
         online: {
             type: Boolean,
         },
+        img: String,
+        postIds: [{type: ObjectId, ref: 'Post'}],
         tokens: [],
         wishList: [{ type: ObjectId, ref: 'Post' }],
     }, {timestamps: true}
 );
+
+UserSchema.methods.toJSON = function(){
+    const user = this._doc;
+    delete user.tokens;
+    delete user.__v;
+    return user;
+}
 
 const User = mongoose.model('User', UserSchema);
 
