@@ -49,7 +49,6 @@ const UserSchema = new mongoose.Schema(
         postIds: [{type: ObjectId, ref: 'Post'}],
         tokens: [],
         likes: [{ type: ObjectId, ref: 'Post' }],
-        followerIds: [{type: ObjectId, ref: 'User'}],
         followIds: [{type: ObjectId, ref: 'User'}]
     }, {timestamps: true}
 );
