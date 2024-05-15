@@ -1,12 +1,18 @@
 const Post = require('../models/Post');
 const User = require('../models/User');
-const Comment = require('../models/Comment')
+
 
 const PostController = {
     async create(req, res){
         try {
-            const post = await Post.create(req.body)
-            res.status(201).send(post)
+            const post = await Post.create({
+              ...req.body,
+              userId: req.user._id
+            })
+            const createPost = await Post.create(post);
+            await User.findByIdAndUpdate(req.params._id, {
+              $push: {postId: createPost._id}})
+            res.status(201).send({msg: 'Ehorabuena acabas de crear una publicación', createPost})
         } catch (error) {
             console.error(error);
             res.status(500).send({msg: 'Ha habido un problema al crear la publicación', error})
@@ -101,7 +107,7 @@ const PostController = {
           );
           await User.findByIdAndUpdate(
             req.user._id,
-            { $push: { wishList: req.params._id } },
+            { $push: { likes: req.params._id } },
             { new: true }
           );    
           res.send(post);
@@ -110,6 +116,20 @@ const PostController = {
           res.status(500).send({msg: "Hubo un problema con tu like"});
         }
       },
+      async dislike(req, res){
+        try {
+          const dislike = await Post.findByIdAndUpdate(
+            req.params._id,
+            {$pull: {likes: req.user._id}},
+            {new: true}
+          )
+          res.send(dislike)
+        } catch (error) {
+          console.error(error);
+          res.status(500).send({msg: "Hubo un problema al eliminar el like"});
+        }
+        
+      }
     }
     
 
