@@ -13,6 +13,7 @@ router.get('/', PostController.getAll);
 router.get('/postAndComments', PostController.getPostAndComments);
 router.put('/comments/:_id', PostController.insertComment);
 router.put('/likes/:_id',authentication, PostController.like);
+router.put('/dislike/:_id',authentication, PostController.dislike);
 
 
 module.exports = router;

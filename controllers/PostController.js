@@ -1,6 +1,6 @@
 const Post = require('../models/Post');
 const User = require('../models/User');
-const Comment = require('../models/Comment')
+
 
 const PostController = {
     async create(req, res){
@@ -110,6 +110,20 @@ const PostController = {
           res.status(500).send({msg: "Hubo un problema con tu like"});
         }
       },
+      async dislike(req, res){
+        try {
+          const dislike = await Post.findByIdAndUpdate(
+            req.params._id,
+            {$pull: {likes: req.user._id}},
+            {new: true}
+          )
+          res.send(dislike)
+        } catch (error) {
+          console.error(error);
+          res.status(500).send({msg: "Hubo un problema al eliminar el like"});
+        }
+        
+      }
     }
     
 
