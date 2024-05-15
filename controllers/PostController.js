@@ -1,5 +1,5 @@
 const Post = require('../models/Post');
-const Comment = require('../models/Comment');
+const User = require('../models/User');
 
 
 const PostController = {
@@ -103,7 +103,7 @@ const PostController = {
           res.send(post);
         } catch (error) {
           console.error(error);
-          res.status(500).send({ message: "Hubo un problema con tu like" });
+          res.status(500).send({msg: "Hubo un problema con tu like"});
         }
       },
     }
