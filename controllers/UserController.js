@@ -73,6 +73,24 @@ const UserController = {
             console.error(error);
             res.status(500).send(error)
         }
+    },
+    async follow(req, res){
+        try {
+            const user = await User.findByIdAndUpdate(
+                req.params._id,
+                {$push: {follow: req.user._id}},
+                {new: true}
+            );
+            await User.findByIdAndUpdate(
+                req.user._id,
+                {$push: {follow: req.params._id}},
+                {new: true}
+            );
+            res.send(user)
+        } catch (error) {
+            console.error(error);
+            res.status(500).send({msg: 'Hubo un problema con su peticion'})
+        }
     }
 }
 

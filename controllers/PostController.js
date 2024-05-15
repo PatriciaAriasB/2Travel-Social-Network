@@ -113,7 +113,7 @@ const PostController = {
           res.send(post);
         } catch (error) {
           console.error(error);
-          res.status(500).send({msg: "Hubo un problema con tu like"});
+          res.status(500).send({msg: 'Hubo un problema con tu like'});
         }
       },
       async dislike(req, res){
@@ -126,7 +126,7 @@ const PostController = {
           res.send(dislike)
         } catch (error) {
           console.error(error);
-          res.status(500).send({msg: "Hubo un problema al eliminar el like"});
+          res.status(500).send({msg: 'Hubo un problema al eliminar el like'});
         }
         
       }
