@@ -1,8 +1,7 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
-// requestAnimationFrame("dotenv").config()
-const {jwt_secret} = process.env 
+const {jwt_secret} = require('../config/keys');
 
 const UserController = {
     async register(req, res, next){
@@ -79,12 +78,12 @@ const UserController = {
         try {
             const user = await User.findByIdAndUpdate(
                 req.params._id,
-                {$push: {follow: req.user._id}},
+                {$push: {follows: req.user._id}},
                 {new: true}
             );
             await User.findByIdAndUpdate(
                 req.user._id,
-                {$push: {follow: req.params._id}},
+                {$push: {follows: req.params._id}},
                 {new: true}
             );
             res.send(user)
