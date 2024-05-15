@@ -10,7 +10,7 @@ router.delete('/id/:_id', authentication, isAuthor, PostController.delete);
 router.get('/title/:title', PostController.getPostsByTitle); //CAMBIAR TITLE A USERNAME MAS ADELANTE
 router.get('/id/:_id', PostController.getPostById);
 router.get('/', PostController.getAll);
-// router.get('/postAndComments', PostController.getPostAndComments);
+router.get('/postAndComments', PostController.getPostAndComments);
 router.put('/comments/:_id', PostController.insertComment);
 router.put('/likes/:_id',PostController.like);
 

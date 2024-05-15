@@ -1,6 +1,6 @@
 const Post = require('../models/Post');
 const User = require('../models/User');
-
+const Comment = require('../models/Comment')
 
 const PostController = {
     async create(req, res){
@@ -79,8 +79,12 @@ const PostController = {
         try {
             const {page = 1, limit = 10} = req.query;
             const post = await Post.find()
-            .populate('userId')
-            .populate('commentIds')
+            .populate({
+              path: "commentsIds",
+            })
+            .populate({
+              path: "userId",
+            })
             .skip((page - 1) * limit)
             res.send(post)
         } catch (error) {

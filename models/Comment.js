@@ -6,12 +6,12 @@ const CommentsSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Por favor, inserte una descripción']
     },
-    postId:{
-        postId: {type: ObjectId, ref: 'Post'}
-    },
-    userId: {
+    
+        postId: {type: ObjectId, ref: 'Post'},
+    
+    
         userId: {type: ObjectId, reg: 'User'}
-    }
+    
   
 }, {timestamps: true});
 
