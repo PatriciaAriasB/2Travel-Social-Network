@@ -48,7 +48,7 @@ const UserSchema = new mongoose.Schema(
         img: String,
         postIds: [{type: ObjectId, ref: 'Post'}],
         tokens: [],
-        wishList: [{ type: ObjectId, ref: 'Post' }],
+        likes: [{ type: ObjectId, ref: 'Post' }],
     }, {timestamps: true}
 );
 
