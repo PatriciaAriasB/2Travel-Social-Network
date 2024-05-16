@@ -107,12 +107,10 @@ const UserController = {
     },
     async getAllInfo(req, res){
         try {
-            const user = await User.findById()
-            .populate({
-                path: 'PostIds'
-            })
-            .populate({
-                path: 'followerIds'
+            const user = await User.findById(req.user._id)
+            .populate({ 
+                    path: 'commentsIds',
+                    path: 'followerIds'
             })
             res.send(user)
         } catch (error) {
