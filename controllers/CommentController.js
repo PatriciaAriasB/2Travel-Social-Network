@@ -12,7 +12,7 @@ const CommentController = {
             
             const createComment = await Comment.create(comment);
             await Post.findByIdAndUpdate(req.params._id, { $push: { commentsIds: createComment._id } })
-            res.status(201).send({ message: `${req.user.name} created a comment successfully.`, createComment })
+            res.status(201).send({ msg: `${req.user.name} Has creado un comentario con exito.`, createComment })
         } catch (error) {
             console.error(error);
             res.status(500).send({ msg: 'Ha habido un problema al crear el comentario' })
