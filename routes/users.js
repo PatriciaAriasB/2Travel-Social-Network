@@ -9,6 +9,7 @@ router.post('/login', UserController.login);
 router.delete('/logout', authentication, UserController.logout);
 router.get('/id/:_id', UserController.getOnline);
 router.get('/name/:name', UserController.getUserByName);
+router.get('/getinfo/id/:_id', authentication, UserController.getAllInfo);
 router.put('/follows/:_id', authentication, UserController.follow);
 router.put('/unfollow/:_id', authentication, UserController.unfollow);
 

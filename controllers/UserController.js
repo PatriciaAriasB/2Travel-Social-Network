@@ -104,6 +104,21 @@ const UserController = {
             console.error(error);
             res.status(500).send({ msg: 'Hubo un problema con su peticion' }) 
         }
+    },
+    async getAllInfo(req, res){
+        try {
+            const user = await User.findById()
+            .populate({
+                path: 'PostIds'
+            })
+            .populate({
+                path: 'followerIds'
+            })
+            res.send(user)
+        } catch (error) {
+            console.error(error);
+            res.status(500).send({ msg: 'Hubo un problema con su peticion', error})
+        }
     }
 }
 

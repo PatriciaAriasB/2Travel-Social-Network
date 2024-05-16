@@ -32,7 +32,7 @@ const UserSchema = new mongoose.Schema(
         phone: {
             type: Number,
             required: [true, 'Por favor, inserte su número de teléfono'],
-            unique: true
+            unique: [true, 'Este numero de telefono ya se está utilizando']
         },
         password: {
             type: String,
