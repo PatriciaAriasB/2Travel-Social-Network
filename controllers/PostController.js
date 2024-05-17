@@ -36,7 +36,7 @@ const PostController = {
             res.status(500).send({msg: 'Ha habido un problema al eliminar la publicación'})
         }
     },
-    async getPostsByTitle(req, res){ //CAMBIAR TITLE A USERNAME CUANDO TENGAMOS EL USERCONTROLLER
+    async getPostsByTitle(req, res){ 
         try {
            if(req.params.title.length > 20){
             return res.status(400).send('Busqueda demasiado larga')
