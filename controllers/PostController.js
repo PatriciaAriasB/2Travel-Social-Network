@@ -1,5 +1,6 @@
 const Post = require('../models/Post');
 const User = require('../models/User');
+require('dotenv').config();
 
 
 const PostController = {
