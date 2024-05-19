@@ -11,6 +11,9 @@ Este proyecto consiste en desarrollar una API REST utilizando MongoDB con Mongoo
 - Gestión de comentarios en los posts.
 - Backend disponible en producción.
 
+Esta API es parte de una aplicación diseñada para viajar con personas o grupos a tu elección, facilitando la planificación y gestión de viajes compartidos.
+
+
 
 ## Tecnologías Utilizadas
 
@@ -19,6 +22,7 @@ Este proyecto consiste en desarrollar una API REST utilizando MongoDB con Mongoo
 - **Autenticación**: Bcrypt para hashing de contraseñas y JWT para tokens de sesión.
 - **Git**: Control de versiones y gestión de ramas.
 - **Trello**: Gestión de tareas.
+- **Figma**: Visualización de proyecto.
 
 
 ## Endpoints
@@ -175,9 +179,19 @@ Para contribuir a este proyecto, por favor sigue estos pasos:
 4. Envía tus cambios a tu repositorio remoto: `git push origin feature/nueva-feature`
 5. Crea un Pull Request hacia la rama `develope`.
 
-## Autor
+## Proyecto Visual con Figma
 
-- **Autores**
+Hemos añadido proyecto visual creado con Figma. Este proyecto incluye el diseño de la interfaz de usuario y varios prototipos interactivos que muestran el flujo de usuario y la disposición visual del producto.
+
+### Enlace al Proyecto en Figma
+
+Puedes ver el proyecto visual en Figma siguiendo este [enlace](URL_DEL_PROYECTO_EN_FIGMA).
+
+![Vista previa del proyecto en Figma](assets/Figma_project.jpg)
+
+
+## Autores
+
 Jairo Nuñez y Patricia Arias.
 
 
